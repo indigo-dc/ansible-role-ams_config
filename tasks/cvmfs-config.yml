@@ -19,9 +19,9 @@
        - cvmfs-config-default
   tags: ams_config
 
-- debug:
-  msg: "VARIABILE = {{ ams_config_cvmfs_repo }}"
-  verbosity: 2
+# - debug:
+#   msg: "VARIABILE = {{ ams_config_cvmfs_repo }}"
+#   verbosity: 2
 
 - name: Creates CVMFS log file
   file: path=/var/log/cvmfs.log state=touch owner=cvmfs group=cvmfs
