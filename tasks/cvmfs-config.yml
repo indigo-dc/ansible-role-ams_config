@@ -170,8 +170,9 @@
 
 - name: mount CVMFS local repo
   mount:
-    path: "/cvmfs/{{ams_config_cvmfs_repo.repository_name}}"  # Only in ansible >= 2.3
+    # path: "/cvmfs/{{ams_config_cvmfs_repo.repository_name}}"  # Only in ansible >= 2.3
     # dest: "/cvmfs/{{ams_config_cvmfs_repo.repository_name}}"  # for ansible < 2.3
+    name: "/cvmfs/{{ams_config_cvmfs_repo.repository_name}}"  # Compatible with all ansible (it's an alias)
     src: "{{ams_config_cvmfs_repo.repository_name}}"
     fstype: cvmfs
     state: mounted
@@ -184,8 +185,9 @@
 
 - name: mount AMS CVMFS repo
   mount:
-    path: "/cvmfs/ams.cern.ch"  # Only in ansible >= 2.3
+    # path: "/cvmfs/ams.cern.ch"  # Only in ansible >= 2.3
     # dest: "/cvmfs/ams.cern.ch"  # for ansible < 2.3
+    name: "/cvmfs/ams.cern.ch"  # Compatible with all ansible (it's an alias)
     src: "ams.cern.ch"
     fstype: cvmfs
     state: mounted
@@ -197,8 +199,9 @@
 
 - name: mount software cern CVMFS repo
   mount:
-    path: "/cvmfs/sft.cern.ch"  # Only in ansible >= 2.3
+    # path: "/cvmfs/sft.cern.ch"  # Only in ansible >= 2.3
     # dest: "/cvmfs/sft.cern.ch"  # for ansible < 2.3
+    name: "/cvmfs/sft.cern.ch"  # Compatible with all ansible (it's an alias)
     src: "sft.cern.ch"
     fstype: cvmfs
     state: mounted
