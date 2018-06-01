@@ -23,6 +23,7 @@ ams_config_cvmfs_repo:
   http_proxy: "{{ams_repo_http_proxy}}"
   repository_name: "{{ams_repo_repository_name}}"
   public_key: "{{ams_repo_public_key}}"
+  public_key_url: "{{ams_repo_public_key_url}}"
 
 ams_config_cvmfs_debug: False
 
