@@ -106,11 +106,11 @@
 
 - name: create/update file {{ams_config_cvmfs_repo.public_key_path}} from URL
   get_url:
-    url: {{ ams_config_cvmfs_repo.public_key_url }}
+    url: "{{ ams_config_cvmfs_repo.public_key_url }}"
     dest: "{{ams_config_cvmfs_repo.public_key_path}}"
     force: yes
-  when: ams_config_cvmfs_repo.public_key_url != ""
-
+  when: ams_config_cvmfs_repo.repository_name != "" and ams_config_cvmfs_repo.public_key_url != ""
+  tags: ams_config_cvmfs_repo
 
 - name: set local AMS_SERVER_URL variable
   blockinfile:
