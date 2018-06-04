@@ -72,7 +72,7 @@
     dest: /etc/cvmfs/default.local
     create: yes
     content: |
-      CVMFS_HTTP_PROXY="{{ams_config_cvmfs_default_http_proxy}};http://ca-proxy.cern.ch:3128;http://ca-proxy1.cern.ch:3128|http://ca-proxy2.cern.ch:3128|http://ca-proxy3.cern.ch:3128|http://ca-proxy4.cern.ch:3128|http://ca-proxy5.cern.ch:3128;DIRECT"
+      CVMFS_HTTP_PROXY="DIRECT;{{ams_config_cvmfs_default_http_proxy}}"
       CVMFS_REPOSITORIES={{ams_config_cvmfs_repositories}}
   when: ams_config_cvmfs_repo.repository_name == ""
   tags: ams_config
@@ -82,7 +82,7 @@
     dest: /etc/cvmfs/default.local
     create: yes
     content: |
-      CVMFS_HTTP_PROXY="http://ca-proxy.cern.ch:3128;http://ca-proxy1.cern.ch:3128|http://ca-proxy2.cern.ch:3128|http://ca-proxy3.cern.ch:3128|http://ca-proxy4.cern.ch:3128|http://ca-proxy5.cern.ch:3128;DIRECT"
+      CVMFS_HTTP_PROXY="DIRECT"
       CVMFS_REPOSITORIES={{ams_config_cvmfs_repositories}},{{ams_config_cvmfs_repo.repository_name}}
   when: ams_config_cvmfs_repo.repository_name != ""
   tags: ams_config_cvmfs_repo
