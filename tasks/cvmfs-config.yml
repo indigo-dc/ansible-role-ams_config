@@ -72,7 +72,7 @@
     dest: /etc/cvmfs/default.local
     create: yes
     content: |
-      CVMFS_HTTP_PROXY="DIRECT;{{ams_config_cvmfs_default_http_proxy}}"
+      CVMFS_HTTP_PROXY="{{ams_config_cvmfs_default_http_proxy}};DIRECT"
       CVMFS_REPOSITORIES={{ams_config_cvmfs_repositories}}
   when: ams_config_cvmfs_repo.repository_name == ""
   tags: ams_config
