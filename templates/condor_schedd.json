@@ -5,7 +5,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "{{htcondor_config_condor_image}}",
+      "image": "{{ams_config_condor_image}}",
       "forcePullImage": true,
       "privileged": true,
       "network": "HOST"
