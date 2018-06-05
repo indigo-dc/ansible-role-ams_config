@@ -6,7 +6,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "{{ams_config_condor_image}}",
+      "image": "{{htcondor_config_condor_image}}",
       "forcePullImage": true,
       "privileged": true,
       "network": "BRIDGE"
