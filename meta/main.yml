@@ -12,4 +12,5 @@ galaxy_info:
    - ams
    - cvmfs
 
-dependencies: []
+dependencies:
+  - { role: indigo-dc.htcondor_config }
