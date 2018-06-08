@@ -16,11 +16,6 @@
           "containerPath": "/cvmfs",
           "hostPath": "/cvmfs",
           "mode": "RW"
-      },
-      {
-        "containerPath": "/home/uwdir",
-        "hostPath": "/tmp/uwdir",
-        "mode": "RW"
       }
     ]
   },
