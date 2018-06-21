@@ -30,7 +30,7 @@ ams_config_cvmfs_debug: False
 ams_config_squid_image: "spiga/frontiersquidv1"
 
 # Condor image and parameters
-htcondor_config_condor_image: "cloudpg/dodas-ams"
+htcondor_config_condor_image: "dodasts/ams"
 htcondor_schedd_ssh_port: 31042
 ams_number_of_slaves: 2
 number_of_wn_instances: 1
