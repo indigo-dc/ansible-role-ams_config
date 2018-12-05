@@ -14,13 +14,15 @@ marathon_protocol: https
 
 # Squid and CVMFS
 ams_config_cvmfs_default_http_proxy: "http://{{ams_default_squid}}:{{ams_default_squid_port}}"
-ams_config_cvmfs_http_proxy: "http://{{ams_config_squid_host}}:{{ams_config_squid_port}}"
 ams_config_cvmfs_repositories: "ams,sft.cern.ch"
+
+ams_config_mysquid_host: "localhost"
+ams_config_mysquid_port: 3128
+ams_config_mysquid: "http://{{ams_default_squid}}:{{ams_default_squid_port}}"
 
 ams_config_cvmfs_repo:
   server_url: "{{ams_repo_server_url}}"
   public_key_path: "{{ams_repo_public_key_path}}"
-  http_proxy: "{{ams_repo_http_proxy}}"
   repository_name: "{{ams_repo_repository_name}}"
   public_key: "{{ams_repo_public_key}}"
   public_key_url: "{{ams_repo_public_key_url}}"
@@ -31,7 +33,6 @@ ams_config_squid_image: "spiga/frontiersquidv1"
 
 # Condor image and parameters
 htcondor_config_condor_image: "dodasts/ams"
-htcondor_schedd_ssh_port: 31042
 ams_number_of_slaves: 2
 number_of_wn_instances: 1
 ams_cpu_x_wn: 1

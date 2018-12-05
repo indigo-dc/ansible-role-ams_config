@@ -1,11 +1,5 @@
 ---
 
-# Prepare uwdir
-- name: create a temp folder as working dir for users
-  file:
-    path: /tmp/uwdir
-    state: directory
-    mode: 0777
 
 # tasks file for ams_config
 - name: install cvmfs repo
@@ -18,10 +12,6 @@
        - cvmfs
        - cvmfs-config-default
   tags: ams_config
-
-# - debug:
-#   msg: "VARIABILE = {{ ams_config_cvmfs_repo }}"
-#   verbosity: 2
 
 - name: Creates CVMFS log file
   file: path=/var/log/cvmfs.log state=touch owner=cvmfs group=cvmfs
@@ -72,7 +62,7 @@
     dest: /etc/cvmfs/default.local
     create: yes
     content: |
-      CVMFS_HTTP_PROXY="{{ams_config_cvmfs_default_http_proxy}};DIRECT"
+      CVMFS_HTTP_PROXY={{ams_config_cvmfs_default_http_proxy}}
       CVMFS_REPOSITORIES={{ams_config_cvmfs_repositories}}
   when: ams_config_cvmfs_repo.repository_name == ""
   tags: ams_config
@@ -82,17 +72,10 @@
     dest: /etc/cvmfs/default.local
     create: yes
     content: |
-      CVMFS_HTTP_PROXY="DIRECT"
+      CVMFS_HTTP_PROXY={{ams_config_cvmfs_default_http_proxy}}
       CVMFS_REPOSITORIES={{ams_config_cvmfs_repositories}},{{ams_config_cvmfs_repo.repository_name}}
   when: ams_config_cvmfs_repo.repository_name != ""
   tags: ams_config_cvmfs_repo
-
-- name: Add CVMFS DEBUG
-  lineinfile:
-    dest: /etc/cvmfs/default.local
-    line: "CVMFS_DEBUGLOG=/var/log/cvmfs.log"
-  when: ams_config_cvmfs_debug == True
-  tags: ams_config
 
 - name: create/update file {{ams_config_cvmfs_repo.public_key_path}}
   lineinfile:
@@ -119,7 +102,7 @@
     content: |
       CVMFS_SERVER_URL={{ams_config_cvmfs_repo.server_url}}
       CVMFS_PUBLIC_KEY={{ams_config_cvmfs_repo.public_key_path}}
-      CVMFS_HTTP_PROXY={{ams_config_cvmfs_repo.http_proxy}}
+      CVMFS_HTTP_PROXY={{ams_config_cvmfs_default_http_proxy}}
   when: ams_config_cvmfs_repo.repository_name != ""
   tags: ams_config_cvmfs_repo
 
@@ -130,7 +113,7 @@
     content: |
       #CVMFS_SERVER_URL="http://cvmfs-stratum-one.cern.ch/opt/@org@"
       CVMFS_SERVER_URL="http://cvmfs-stratum-one.cern.ch/cvmfs/ams.cern.ch"
-      CVMFS_HTTP_PROXY=DIRECT
+      CVMFS_HTTP_PROXY={{ams_config_cvmfs_default_http_proxy}}
   tags: ams_config_cvmfs_repo
 
 - name: set software cern repo config
@@ -139,6 +122,7 @@
     create: yes
     content: |
       CVMFS_SERVER_URL="http://cvmfs-stratum-one.cern.ch/cvmfs/sft.cern.ch"
+      CVMFS_HTTP_PROXY={{ams_config_cvmfs_default_http_proxy}}
   tags: ams_config_cvmfs_repo
 
 - name: Enable user_allow_other in fuse.conf
