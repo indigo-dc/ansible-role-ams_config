@@ -1,0 +1,41 @@
+---
+# marathon default variables
+
+marathon_username: admin
+marathon_password: passwd
+marathon_port: 8443
+marathon_protocol: https
+
+# Mandatory Variables
+#htcondor_config_schedd_ip: MANDATORY - NO DEFAULT AVAILABLE
+
+#ams_config_cvmfs_public_key: MANDATORY - NO DEFAULT AVAILABLE
+#ams_cvmfs_repo: NO DEFAULT AVAILABLE
+
+# Squid and CVMFS
+ams_config_cvmfs_default_http_proxy: "http://{{ams_default_squid}}:{{ams_default_squid_port}}"
+ams_config_cvmfs_repositories: "ams,sft.cern.ch"
+
+ams_config_mysquid_host: "localhost"
+ams_config_mysquid_port: 3128
+ams_config_mysquid: "http://{{ams_default_squid}}:{{ams_default_squid_port}}"
+
+ams_config_cvmfs_repo:
+  server_url: "{{ams_repo_server_url}}"
+  public_key_path: "{{ams_repo_public_key_path}}"
+  repository_name: "{{ams_repo_repository_name}}"
+  public_key: "{{ams_repo_public_key}}"
+  public_key_url: "{{ams_repo_public_key_url}}"
+
+ams_config_cvmfs_debug: False
+
+ams_config_squid_image: "spiga/frontiersquidv1"
+
+# Condor image and parameters
+htcondor_config_condor_image: "dodasts/ams"
+ams_number_of_slaves: 2
+number_of_wn_instances: 1
+ams_cpu_x_wn: 1
+ams_ram_x_wn: 2000
+ams_docker_cpu_x_wn: 0.98
+ams_docker_ram_x_wn: 1999.98
