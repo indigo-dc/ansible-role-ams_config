@@ -30,8 +30,8 @@
 
 - name: wait for ams squid to be up and running 
   wait_for: 
-     host: "{{ams_config_squid_host}}" 
-     port: "{{ams_config_squid_port}}"
+     host: "{{ams_default_squid}}" 
+     port: "{{ams_default_squid_port}}"
      delay: 20
      timeout: 600
      connect_timeout: 10
