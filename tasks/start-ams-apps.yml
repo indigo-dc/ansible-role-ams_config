@@ -54,7 +54,7 @@
     # condor nodes, otherwise they can't be recognized by master
     body: "{{ lookup('template', 'templates/condor_wn.json') }}"
     body_format: json
-   status_code: [200, 201, 409]  # app created, deployment started, already running deployment
+    status_code: [200, 201, 409]  # app created, deployment started, already running deployment
     return_content: yes
   retries: 10
   delay: 20
