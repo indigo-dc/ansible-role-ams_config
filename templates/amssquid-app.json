@@ -6,8 +6,8 @@
         "image": "{{ams_config_squid_image}}",
         "network": "BRIDGE",
         "portMappings": [{
-          "containerPort": {{ams_config_squid_port}},
-          "servicePort": {{ams_config_squid_port}},
+          "containerPort": {{ams_default_squid_port}},
+          "servicePort": {{ams_default_squid_port}},
           "protocol": "tcp"
         }]
       }

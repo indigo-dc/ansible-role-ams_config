@@ -4,3 +4,5 @@
   when: (ams_config_node is defined) and (ams_config_node == "wn")
 - include: start-ams-apps.yml
   when: (ams_config_node is defined) and (ams_config_node == "master")
+- include: start-wn-apps.yml
+  when: (ams_config_node is defined) and (ams_config_node == "execute")

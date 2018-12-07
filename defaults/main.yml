@@ -1,8 +1,6 @@
 ---
 # marathon default variables
 
-marathon_username: admin
-marathon_password: passwd
 marathon_port: 8443
 marathon_protocol: https
 
@@ -17,7 +15,7 @@ ams_config_cvmfs_default_http_proxy: "http://{{ams_default_squid}}:{{ams_default
 ams_config_cvmfs_repositories: "ams,sft.cern.ch"
 
 ams_config_mysquid_host: "localhost"
-ams_config_mysquid_port: 3128
+ams_default_squid_port: 3128
 ams_config_mysquid: "http://{{ams_default_squid}}:{{ams_default_squid_port}}"
 
 ams_config_cvmfs_repo:
