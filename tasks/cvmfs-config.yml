@@ -97,7 +97,7 @@
 
 - name: set local AMS_SERVER_URL variable
   blockinfile:
-    dest: /etc/cvmfs/config.d/ams.local.repo.conf
+    dest: /etc/cvmfs/config.d/{{ams_config_cvmfs_repo.repository_name}}.conf
     create: yes
     content: |
       CVMFS_SERVER_URL={{ams_config_cvmfs_repo.server_url}}
