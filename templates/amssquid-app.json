@@ -29,8 +29,8 @@
       }
     ],
     "constraints": [
-      ["hostname", "UNLIKE", "{{htcondor_config_schedd_ip}}"],
-      ["hostname", "UNLIKE", "{{htcondor_config_ccb_ip}}"]
+      ["ccb", "UNLIKE", "True"],
+      ["schedd", "UNLIKE", "True"]
     ],
     "cmd": "/launch_squid.sh",
     "instances": 1,
